@@ -79,8 +79,10 @@ def bloch_vector(theta: float, phi: float) -> np.ndarray:
 ```
 
 If you want to tweak the rendering, the full script lives at
-[`code/bloch_sphere.py`](../../code/bloch_sphere.py); run `make figures`
-from the repo root to regenerate every plot on the site.
+[`code/bloch_sphere.py`](../../code/bloch_sphere.py). It declares its
+dependencies inline, so a single `uv run code/bloch_sphere.py` is enough
+to reproduce the figure; `make figures` does the same for every plot on
+the site.
 
 ## Mixed states and the ball
 

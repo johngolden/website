@@ -15,7 +15,7 @@ a Quarto blog of pedagogical write-ups on quantum computing.
 ├── posts/
 │   └── bloch-sphere/
 │       └── index.qmd   # one post per directory
-├── code/               # standalone production-style .py scripts
+├── code/               # standalone scripts, deps declared inline (PEP 723)
 │   └── bloch_sphere.py
 ├── figures/            # SVGs written by code/*.py, embedded by posts
 ├── Makefile            # `make figures`, `make preview`, etc.
@@ -25,6 +25,9 @@ a Quarto blog of pedagogical write-ups on quantum computing.
 ### The figure / code contract
 
 - Every figure on the site is produced by a script in `code/`.
+- Each script declares its own dependencies inline ([PEP 723](https://peps.python.org/pep-0723/))
+  and is run with `uv run`, which transparently sets up the right
+  environment on the fly.
 - Scripts write SVGs into `figures/`.
 - Posts embed those saved files; **Quarto does not execute code at build
   time** (`execute.enabled: false`).
@@ -40,9 +43,14 @@ reading.
 Install once:
 
 ```sh
-brew install quarto                  # or: see https://quarto.org/docs/get-started/
-python -m pip install -r requirements.txt
+brew install quarto uv               # or: https://quarto.org/docs/get-started/
+                                     # and: https://docs.astral.sh/uv/
 ```
+
+That's it — there is no `requirements.txt` and no virtualenv to manage.
+`uv run code/<script>.py` reads the script's inline `# /// script` block
+and installs exactly what that script needs in an isolated, cached
+environment.
 
 Preview with live reload:
 
@@ -68,13 +76,23 @@ make clean     # remove _site/ and generated SVGs
   rather than Obsidian wikilinks — the source is Obsidian-friendly but
   the build is plain Quarto.
 - Citations live in a single `references.bib`. Cite with `@bibkey`.
+- New figure scripts go in `code/` with a PEP 723 header listing their
+  deps, e.g.:
+
+  ```python
+  # /// script
+  # requires-python = ">=3.11"
+  # dependencies = ["numpy>=1.26", "matplotlib>=3.8", "qiskit>=1.0"]
+  # ///
+  ```
 
 ## Deployment
 
 Push to `main`. The workflow in `.github/workflows/publish.yml`:
 
-1. Installs Python deps and Quarto.
-2. Runs `make figures` to regenerate every SVG.
+1. Installs `uv` and Quarto.
+2. Runs `make figures`, which `uv run`s each script (deps resolved from
+   each script's inline metadata, cached between CI runs).
 3. Bundles `code/` into `code.zip` for the download link.
 4. Renders the site and deploys to GitHub Pages.
 

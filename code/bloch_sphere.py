@@ -1,14 +1,19 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "numpy>=1.26",
+#   "matplotlib>=3.8",
+# ]
+# ///
 """Render a labeled Bloch sphere with a sample state vector.
 
-This is a standalone, production-style script. It does not depend on any
-notebook environment. Run it from the repo root:
+This is a standalone, production-style script. Dependencies are declared
+inline above (PEP 723); run it with uv from the repo root:
 
-    python code/bloch_sphere.py
+    uv run code/bloch_sphere.py
 
 It writes ``figures/bloch_sphere.svg``. The script is the single source of
 truth for the figure used in the Bloch-sphere post.
-
-Dependencies are pinned in ``requirements.txt`` (numpy, matplotlib).
 """
 
 from __future__ import annotations
