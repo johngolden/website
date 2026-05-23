@@ -1,0 +1,12 @@
+format:
+  html:
+    toc: true
+    number-sections: false
+    fig-format: svg
+    fig-align: center
+
+execute:
+  enabled: false
+  freeze: true
+
+categories: [quantum-computing]

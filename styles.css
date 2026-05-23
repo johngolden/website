@@ -1,0 +1,13 @@
+/* Minimal extras layered on top of custom.scss. */
+
+/* Make external links visually distinguishable but not noisy. */
+a.external::after {
+  content: " ↗";
+  font-size: 0.85em;
+  opacity: 0.6;
+}
+
+/* Tighten the spacing around numbered equations. */
+.eq-number {
+  color: #888;
+}

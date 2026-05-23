@@ -1,0 +1,71 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "posts/**/*.qmd"
+  resources:
+    - "figures/**"
+    - "code/**"
+
+website:
+  title: "Quantum Notes"
+  description: "Pedagogical write-ups on quantum computing."
+  site-url: https://johngolden.github.io/website
+  repo-url: https://github.com/johngolden/website
+  repo-actions: [edit, source, issue]
+  page-navigation: true
+  back-to-top-navigation: true
+  navbar:
+    background: light
+    pinned: true
+    left:
+      - text: "Posts"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+    right:
+      - icon: github
+        href: https://github.com/johngolden/website
+        aria-label: GitHub
+  page-footer:
+    left: "© 2026 John Golden"
+    right:
+      - icon: github
+        href: https://github.com/johngolden/website
+
+format:
+  html:
+    theme:
+      light: [cosmo, custom.scss]
+      dark: [darkly, custom.scss]
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    code-copy: true
+    code-overflow: wrap
+    code-tools: false
+    highlight-style:
+      light: github
+      dark: github-dark
+    fig-format: svg
+    fig-align: center
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    smooth-scroll: true
+    link-external-newwindow: true
+    citations-hover: true
+    crossrefs-hover: true
+    css: styles.css
+
+execute:
+  enabled: false
+  freeze: true
+
+bibliography: references.bib
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/american-physics-society.csl
+
+crossref:
+  fig-prefix: "Figure"
+  eq-prefix: "Eq."
+  sec-prefix: "Section"

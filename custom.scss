@@ -1,0 +1,138 @@
+/*-- scss:defaults --*/
+
+// Typography — sober serif body for technical reading,
+// crisp sans for headings, monospace for code.
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif: "Source Serif Pro", "Charter", Georgia,
+  "Times New Roman", serif !default;
+$font-family-monospace: "JetBrains Mono", "Fira Code", "SF Mono",
+  Menlo, Consolas, monospace !default;
+
+$font-family-base: $font-family-serif;
+$headings-font-family: $font-family-sans-serif;
+$headings-font-weight: 600;
+
+$font-size-base: 1.05rem;
+$line-height-base: 1.65;
+
+// Slightly muted body color (overridden in dark by darkly).
+$body-color: #1c1c1c;
+$link-color: #0b5394;
+$link-hover-color: darken($link-color, 12%);
+
+// Code styling.
+$code-color: #c7254e;
+$code-bg: #f7f7f9;
+
+/*-- scss:rules --*/
+
+// Pull in webfonts.
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap");
+
+// Comfortable measure for technical reading.
+.quarto-title-block .quarto-title-banner {
+  padding-block: 1.5rem;
+}
+
+main.content {
+  max-width: 78ch;
+}
+
+// Headings.
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.005em;
+}
+
+h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--bs-border-color, #e6e6e6);
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+// Math: KaTeX/MathJax — make display equations stand out a bit.
+.math.display, mjx-container[display="true"] {
+  margin-block: 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+// Inline code distinct from prose but not loud.
+code:not(pre > code) {
+  padding: 0.12em 0.32em;
+  border-radius: 4px;
+  font-size: 0.92em;
+}
+
+// Code blocks: subtle border, comfortable padding.
+div.sourceCode {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  margin-block: 1rem;
+}
+
+pre.sourceCode {
+  padding: 0.9rem 1rem;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+
+// Figures: center captions, slight muted color.
+figure.figure, .quarto-figure {
+  margin-block: 1.5rem;
+}
+
+figcaption, .figure-caption, .quarto-figcaption {
+  font-size: 0.88rem;
+  color: #555;
+  text-align: center;
+}
+
+// Blog listing.
+.quarto-listing-default .listing-item {
+  border-bottom: 1px solid var(--bs-border-color, #e6e6e6);
+  padding-block: 1rem;
+}
+
+.listing-title {
+  font-family: $font-family-sans-serif;
+  font-weight: 600;
+}
+
+.listing-description {
+  color: #555;
+}
+
+// Navbar: keep it light and unobtrusive.
+.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-family: $font-family-sans-serif;
+}
+
+// Dark-mode overrides where darkly's defaults are too harsh.
+[data-bs-theme="dark"] {
+  --bs-body-color: #e8e8e8;
+  --bs-body-bg: #1b1d1f;
+
+  figcaption, .figure-caption, .quarto-figcaption,
+  .listing-description {
+    color: #b6b6b6;
+  }
+
+  code:not(pre > code) {
+    background: #2a2d31;
+    color: #ff8896;
+  }
+
+  div.sourceCode {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  h2 {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+}

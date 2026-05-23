@@ -1,0 +1,26 @@
+# Quarto build artifacts
+/_site/
+/.quarto/
+/_freeze/
+
+# Generated bundles
+/code.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Jupyter (in case anything sneaks in locally)
+.ipynb_checkpoints/
