@@ -1,6 +1,5 @@
 ---
-title: "Quantum Notes"
-subtitle: "Pedagogical write-ups on quantum computing"
+title: "Site title"
 listing:
   contents: posts
   sort: "date desc"

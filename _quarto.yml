@@ -9,8 +9,7 @@ project:
     - "code/**"
 
 website:
-  title: "Quantum Notes"
-  description: "Pedagogical write-ups on quantum computing."
+  title: "Site title"
   site-url: https://johngolden.github.io/website
   repo-url: https://github.com/johngolden/website
   repo-actions: [edit, source, issue]
@@ -28,11 +27,6 @@ website:
       - icon: github
         href: https://github.com/johngolden/website
         aria-label: GitHub
-  page-footer:
-    left: "© 2026 John Golden"
-    right:
-      - icon: github
-        href: https://github.com/johngolden/website
 
 format:
   html:
