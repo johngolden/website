@@ -25,6 +25,7 @@ jobs:
         uses: astral-sh/setup-uv@v3
         with:
           enable-cache: true
+          cache-dependency-glob: "code/**/*.py"
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
